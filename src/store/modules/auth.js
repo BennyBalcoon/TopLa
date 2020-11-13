@@ -1,5 +1,4 @@
-import axios from 'axios'
-import axiosInstance from '@/services/axios'
+import axios from '../../services/axios'
 import jwt from 'jsonwebtoken'
 
 function checkTokenValidity(token) {
@@ -74,7 +73,7 @@ export default {
                 }
             }
 
-            return axiosInstance.get('/api/v1/users/me', config)
+            return axios.get('/api/v1/users/me', config)
                 .then((res) => {
                     const user = res.data
                     console.log(user);
