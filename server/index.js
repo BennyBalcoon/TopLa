@@ -21,13 +21,13 @@ sequelize
     console.error('Unable to connect to the database:', err);
   });
 
-// sequelize.sync({force: true})
-//   .then(() => {
-//     console.log("sync DB");
-//         })
-//         .catch((err) => {
-//           console.log(err);
-//         })
+sequelize.sync({force: true})
+  .then(() => {
+    console.log("sync DB");
+        })
+        .catch((err) => {
+          console.log(err);
+        })
 
 User.hasMany(Advert, { foreignKey: 'adv_usrid'})
 Advert.belongsTo(User, { foreignKey: 'adv_usrid'})

@@ -16,8 +16,6 @@ function checkTokenValidity(token) {
     return false
 }
 
-// const initialState = user ? { status: { loggedIn: true}, user } : {  status: { loggedIn: false}, user: null }; 
-
 export default {
     namespaced: true,
     state: {
@@ -59,8 +57,9 @@ export default {
                 resolve(true)
             })
         },
-        getAuthUser(context) {
-            const authUser = context.getters['authUser']
+        getAuthUser({commit, getters}) {
+            const authUser = getters['authUser']
+
             const token = localStorage.getItem('topla-jwt')
             const isTokenValid = checkTokenValidity(token)
 
@@ -79,13 +78,13 @@ export default {
                     const user = res.data
                     console.log(user);
                     localStorage.setItem('topla-jwt', user.token)
-                    context.commit('setAuthUser', user)
-                    context.commit('setAuthState', true)
+                    commit('setAuthUser', user)
+                    commit('setAuthState', true)
                     return user
                 })
                 .catch((err) => {
-                    context.commit('setAuthUser', null)
-                    context.commit('setAuthState', true)
+                    commit('setAuthUser', null)
+                    commit('setAuthState', true)
                     return err
                 })
         }

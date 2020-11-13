@@ -1,5 +1,7 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../config/db.config')
+// const User = require('./user')
+// const Category = require('./category')
 
 const Advert = sequelize.define('adverts', {
     id: {
@@ -45,7 +47,6 @@ const Advert = sequelize.define('adverts', {
         type: Sequelize.DATE,
         field: 'adv_updatedat'
       }
-      
     //   usrid: {
     //      type: Sequelize.INTEGER,
     //      field: 'adv_usrid',

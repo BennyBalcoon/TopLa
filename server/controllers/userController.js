@@ -64,7 +64,6 @@ exports.login = function(req, res) {
     }
 
    const originalPassword = user[0].dataValues.password
-   console.log(user[0].dataValues);
 
    bcrypt
     .compare(password, originalPassword)
@@ -92,11 +91,13 @@ exports.login = function(req, res) {
       }
     })
     .catch((err) => {
-      console.log(err);
+      res.status(422).json({err})
     })
-    .catch((err) => {
-      res.status(500).json({err})
-    })
+  })
+    .catch(() => {
+    res.status(500).send({errors: {
+      'message': 'Les données renseignées ne sont pas valides'
+    }})
   });
 };
 

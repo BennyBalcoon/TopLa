@@ -64,6 +64,7 @@
 
 <script>
 import { required, email } from "vuelidate/lib/validators";
+
 export default {
   data() {
     return {
@@ -97,7 +98,9 @@ export default {
           this.$router.push('/')
         })
         .catch((err) => {
-          console.log(err);
+          const error = err.response.data.errors.message
+          console.log(error);
+          this.$toasted.error(error, {duration: 5000})
         })
     },
   },
