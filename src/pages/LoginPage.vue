@@ -97,7 +97,8 @@ export default {
           this.$router.push('/')
         })
         .catch((err) => {
-          console.log(err);
+          const error = err.response.data.errors.message
+          this.$toasted.error(error, {duration: 5000})
         })
     },
   },
