@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import createPersistedState from "vuex-persistedstate";
 
 import adverts from './modules/adverts'
 import categories from './modules/categories'
@@ -15,6 +16,21 @@ export default new Vuex.Store({
         users,
         auth
     },
+    plugins: [createPersistedState({
+        reducer: persistedState => {
+            const Run = { ...persistedState.run }
+              const Compile = { ...persistedState.compile }
+              delete Compile.solVersions
+              delete Run.isProviderSet
+              delete Run.providerInstance
+              delete Run.privateKey
+              delete Run.isPrivateKeySet
+              delete Run.deployedContracts
+              delete Run.accountsLoading
+              delete Run.receipts
+              return { ...persistedState, run: Run, compile: Compile } 
+        }
+    })], 
     // simple functions to mutate the state
     mutations: {
         // setCategories(state, categories) {
