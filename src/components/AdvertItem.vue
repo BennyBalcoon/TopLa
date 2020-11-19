@@ -5,7 +5,7 @@
       <!-- <router-link v-bind:to="{ name: 'PageMeetupDetail', params: { id: meetup._id } }" class="card-meetup-link"> -->
         <div class="card-image">
           <figure class="image is-4by3">
-            <img v-bind:src="advert.image1" alt="Image" />
+            <img v-bind:src="advert.image" alt="Image" />
           </figure>
         </div>
         <div class="card-content">

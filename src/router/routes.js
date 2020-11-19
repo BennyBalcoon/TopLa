@@ -42,13 +42,6 @@ const router = new Router({
         name: 'AdvertCreatePage',
         component: AdvertCreatePage ,
         meta: {onlyAuthUser: true}
-        // beforeEnter(to, from, next) {
-        //     if (store.getters['auth/isAuthenticated']) {
-        //         next()
-        //     } else {
-        //         next({name: 'NotAuthenticatedPage'})
-        //     }
-        // }
     },
     {
         path: '/annonce/secret',

@@ -27,6 +27,15 @@ export default {
                 commit('setItem', {resource: 'adverts', item: advert}, {root: true})
                 return state.item
             })
+        },
+        createAdvert({rootState}, advertToCreate) {
+            advertToCreate.user = rootState.auth.user
+            return axios.post('/api/v1/notices', advertToCreate)
+                .then((res) => {
+                   return res.data
+                }).catch((err) => {
+                    console.log({err});
+                })
         }
     },
     mutations: {

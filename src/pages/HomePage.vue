@@ -26,7 +26,7 @@ export default {
     mixins: [pageLoader],
     computed: {
       ...mapState({
-        categories: state => state.categories.items
+        categories: state => state.categories.items,
       })
     },
     created() {
@@ -41,7 +41,7 @@ export default {
         })
     },
     methods: {
-      ...mapActions('categories', ['fetchCategories'])
+      ...mapActions('categories', ['fetchCategories']),
       // categories references the name of the module in store
     }
 };

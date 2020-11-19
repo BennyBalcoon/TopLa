@@ -172,6 +172,10 @@ export default {
       this.$v.form.$touch();
       this.$store.dispatch('auth/registerUser', this.form)
         .then(() => {
+          this.$toasted.success('Merci, vous venez de créer votre compte et pouvez dès maintenant vous connecter', {
+              duration: 5000,
+              theme: 'bubble'
+            })
           this.$router.push('/login')
         })
         .catch((err) => {

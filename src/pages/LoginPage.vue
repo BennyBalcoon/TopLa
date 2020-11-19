@@ -98,7 +98,10 @@ export default {
         })
         .catch((err) => {
           const error = err.response.data.errors.message
-          this.$toasted.error(error, {duration: 5000})
+          this.$toasted.error(error, {
+            duration: 5000,
+            theme: 'bubble'
+            })
         })
     },
   },

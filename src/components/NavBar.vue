@@ -2,7 +2,7 @@
   <nav class="navbar is-spaced" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <router-link v-bind:to="'/'" class="navbar-item">
-        <h1 class="title is-4">TopLa</h1>
+        <h1 class="title is-4 is-rounded">TopLa</h1>
       </router-link>
       <a
         role="button"
@@ -19,11 +19,8 @@
 
     <div id="navbarBasicExample" class="navbar-menu is-active">
       <div class="navbar-start">
-        <router-link v-bind:to="{ name: 'AdvertsPage' }" class="navbar-item">Find</router-link>
+        <router-link v-bind:to="{ name: 'AdvertsPage' }" class="navbar-item">Voir les annonces</router-link>
 
-        <!-- <div class="navbar-item">
-          <input class="input is-rounded" type="text" placeholder="Je cherche..." />
-        </div> -->
         <div class="navbar-item">
           <SearchInput />
         </div>
@@ -42,20 +39,22 @@
       </div>
 
       <div class="navbar-end">
-        <div v-if="user" class="navbar-item">
-          Bienvenue {{user.email}}
+        <div class="navbar-item">
+          <router-link v-bind:to="{ name: 'AdvertCreatePage' }" class="button is-primary">
+              <strong>Créer une annonce</strong>
+            </router-link>
         </div>
         <div v-if="user" class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link"> Account </a>
+          <a class="navbar-link">{{user.firstName | capitalize}} {{user.lastName | capitalize}} </a>
           <div class="navbar-dropdown">
-            <a href="#" class="navbar-item"> Profile </a>
+            <a href="#" class="navbar-item"> Mon profil </a>
             <hr class="navbar-divider" />
-            <a v-on:click.prevent="logout" class="navbar-item"> Logout </a>
+            <a v-on:click.prevent="logout" class="navbar-item"> Se déconnecter </a>
           </div>
         </div>
         <div v-else class="navbar-item has-dropdown">
           <div class="buttons">
-            <router-link v-bind:to="{ name: 'RegisterPage' }" class="button is-primary">
+            <router-link v-bind:to="{ name: 'RegisterPage' }" class="button is-link">
               <strong>S'inscrire</strong>
             </router-link>
             <router-link v-bind:to="{ name: 'LoginPage' }" class="button is-link">
@@ -89,7 +88,13 @@ export default {
 </script>
 
 <style scoped>
-/* .is-rounded {
+
+.is-rounded {
   height: 30px;
-} */
-</style>
+}
+
+.title {
+  color: #f3628d
+}
+
+</style>>
