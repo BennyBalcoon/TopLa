@@ -85,6 +85,14 @@ export default {
                     context.commit('setAuthState', true)
                     return err
                 })
+        },
+        updateUser({commit}, user) {
+            return axios.patch(`/api/v1/users/${user.id}`, user)
+                .then((res) => {
+                    const updatedUser = res.data
+                    commit('setAuthUser', updatedUser)
+                    return updatedUser
+                })
         }
     },
     mutations: {
