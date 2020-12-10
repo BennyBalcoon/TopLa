@@ -8,8 +8,9 @@ import RegisterPage from '../pages/RegisterPage'
 import AdvertsPage from '../pages/AdvertsPage'
 import AdvertDetailPage from '../pages/AdvertDetailPage'
 import AdvertCreatePage from '../pages/AdvertCreatePage'
+import AdvertEditPage from '../pages/AdvertEditPage'
+import ProfilePage from '../pages/ProfilePage'
 import ErrorPage from '../pages/ErrorPage'
-import SecretPage from '../pages/SecretPage'
 import NotAuthenticatedPage from '../pages/NotAuthenticatedPage'
 
 Vue.use(Router)
@@ -35,7 +36,14 @@ const router = new Router({
     {
         path: '/recherche',
         name: 'AdvertsPage',
-        component: AdvertsPage 
+        component: AdvertsPage,
+        props: (route) => ({ query: route.query.query})
+    },
+    {
+        path: '/recherche/categories/:categoryId/:category',
+        name: 'AdvertsByCategoryPage',
+        component: AdvertsPage ,
+        props: true
     },
     {
         path: '/annonce/nouvelle',
@@ -44,22 +52,23 @@ const router = new Router({
         meta: {onlyAuthUser: true}
     },
     {
-        path: '/annonce/secret',
-        name: 'SecretPage',
-        component: SecretPage ,
-        meta: {onlyAuthUser: true}
-        // beforeEnter(to, from, next) {
-        //     if (store.getters['auth/isAuthenticated']) {
-        //         next()
-        //     } else {
-        //         next({name: 'NotAuthenticatedPage'})
-        //     }
-        // }
+        path: '/annonce/:advertId',
+        name: 'AdvertDetailPage',
+        component: AdvertDetailPage,
+        props: true
     },
     {
-        path: '/annonce/:id',
-        name: 'AdvertDetailPage',
-        component: AdvertDetailPage 
+        path: '/annonce/:advertId/modifier',
+        name: 'AdvertEditPage',
+        component: AdvertEditPage,
+        meta: {onlyAuthUser: true},
+        props: true
+    },
+    {
+        path: '/profil/',
+        name: 'ProfilePage',
+        component: ProfilePage,
+        meta: {onlyAuthUser: true}
     },
     {
         path: '/401',
