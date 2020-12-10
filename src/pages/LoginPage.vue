@@ -3,8 +3,8 @@
     <div class="hero-body">
       <div class="container has-text-centered">
         <div class="column is-4 is-offset-4">
-          <h3 class="title has-text-grey">Login</h3>
-          <p class="subtitle has-text-grey">Please login to proceed.</p>
+          <h3 class="title has-text-grey">Se connecter</h3>
+          <!-- <p class="subtitle has-text-grey">Please login to proceed.</p> -->
           <div class="box">
             <figure class="avatar">
               <img src="https://placehold.it/128x128" />
@@ -22,8 +22,8 @@
                     autocomplete="email"
                   />
                   <div v-if="$v.form.email.$error" class="form-error">
-                    <span v-if="!$v.form.email.required" class="help is-danger">Une addresse mail est requise</span>
-                    <span v-if="!$v.form.email.email" class="help is-danger">Cette addresse mail n'est pas valide</span>
+                    <span v-if="!$v.form.email.required" class="help is-danger">Une adresse mail est requise</span>
+                    <span v-if="!$v.form.email.email" class="help is-danger">Cette adresse mail n'est pas valide</span>
                   </div>
                 </div>
               </div>

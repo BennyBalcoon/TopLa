@@ -2,7 +2,7 @@
   <div class="column is-one-third">
     <!-- <router-link v-bind:to="'/meetups/' + meetup._id" class="card large"> -->
     <div class="card large">
-      <!-- <router-link v-bind:to="{ name: 'PageMeetupDetail', params: { id: meetup._id } }" class="card-meetup-link"> -->
+      <router-link v-bind:to="{ name: 'AdvertDetailPage', params: { advertId: advert.id } }" class="card-meetup-link">
         <div class="card-image">
           <figure class="image is-4by3">
             <img v-bind:src="advert.image" alt="Image" />
@@ -36,7 +36,7 @@
             </div>
           </div>
         </div>
-      <!-- </router-link> -->
+      </router-link>
     </div>
   </div>
 </template>
@@ -49,6 +49,9 @@ export default {
       type: Object,
     },
   },
+  // created() {
+  //   console.log(this.$props);
+  // }
 };
 </script>
 

@@ -29,11 +29,11 @@
       createAdvert(advertToCreate) {
         this.$store.dispatch('adverts/createAdvert', advertToCreate)
           .then((res) => {
+            console.log(res);
             this.$toasted.success('Votre nouvelle annonce a bien été créée, vous pouvez la voir ou la modifier dans votre profil', {
               duration: 5000,
               theme: 'bubble'
             })
-            console.log(res);
             this.$router.push('/')
           })
           .catch((err) => {

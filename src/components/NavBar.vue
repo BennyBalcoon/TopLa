@@ -41,13 +41,15 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <router-link v-bind:to="{ name: 'AdvertCreatePage' }" class="button is-primary">
-              <strong>Créer une annonce</strong>
-            </router-link>
+            <strong>Créer une annonce</strong>
+          </router-link>
         </div>
         <div v-if="user" class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">{{user.firstName | capitalize}} {{user.lastName | capitalize}} </a>
+          <a class="navbar-link">{{ user.firstName | capitalize }} {{ user.lastName | capitalize }} </a>
           <div class="navbar-dropdown">
-            <a href="#" class="navbar-item"> Mon profil </a>
+            <router-link v-bind:to="{ name: 'ProfilePage' }" class="navbar-item"> Mon profil </router-link>
+            <hr class="navbar-divider" />
+            <a href="#" class="navbar-item"> Mes annonces </a>
             <hr class="navbar-divider" />
             <a v-on:click.prevent="logout" class="navbar-item"> Se déconnecter </a>
           </div>
@@ -69,32 +71,32 @@
 
 <script>
 import SearchInput from "@/components/SearchInput";
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
 export default {
   components: {
     SearchInput,
   },
   computed: {
     ...mapGetters({
-      'user': 'auth/authUser'
-    })
+      user: "auth/authUser",
+    }),
   },
   methods: {
     logout() {
-      this.$store.dispatch('auth/logout')
-    }
-  }
+      this.$store.dispatch("auth/logout").then(() => {
+        this.$router.push("/");
+      });
+    },
+  },
 };
 </script>
 
 <style scoped>
-
 .is-rounded {
   height: 30px;
 }
 
 .title {
-  color: #f3628d
-}
-
-</style>>
+  color: #f3628d;
+}</style
+>>

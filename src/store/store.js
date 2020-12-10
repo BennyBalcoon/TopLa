@@ -14,23 +14,25 @@ export default new Vuex.Store({
         adverts,
         categories,
         users,
-        auth
+        auth,
     },
-    plugins: [createPersistedState({
-        reducer: persistedState => {
-            const Run = { ...persistedState.run }
-              const Compile = { ...persistedState.compile }
-              delete Compile.solVersions
-              delete Run.isProviderSet
-              delete Run.providerInstance
-              delete Run.privateKey
-              delete Run.isPrivateKeySet
-              delete Run.deployedContracts
-              delete Run.accountsLoading
-              delete Run.receipts
-              return { ...persistedState, run: Run, compile: Compile } 
-        }
-    })], 
+    plugins: [createPersistedState(
+    // {
+    //     reducer: persistedState => {
+    //         const Run = { ...persistedState.run }
+    //           const Compile = { ...persistedState.compile }
+    //           delete Compile.solVersions
+    //           delete Run.isProviderSet
+    //           delete Run.providerInstance
+    //           delete Run.privateKey
+    //           delete Run.isPrivateKeySet
+    //           delete Run.deployedContracts
+    //           delete Run.accountsLoading
+    //           delete Run.receipts
+    //           return { ...persistedState, run: Run, compile: Compile } 
+    //     }
+    // }
+    )], 
     // simple functions to mutate the state
     mutations: {
         // setCategories(state, categories) {
