@@ -1,5 +1,5 @@
 <template>
-  <div class="meetup-create-page">
+  <div class="advert-create-page">
     <AppBanner />
     <section class="section">
       <div class="container">
@@ -28,8 +28,7 @@
     methods: {
       createAdvert(advertToCreate) {
         this.$store.dispatch('adverts/createAdvert', advertToCreate)
-          .then((res) => {
-            console.log(res);
+          .then(() => {
             this.$toasted.success('Votre nouvelle annonce a bien été créée, vous pouvez la voir ou la modifier dans votre profil', {
               duration: 5000,
               theme: 'bubble'
@@ -46,7 +45,7 @@
 </script>
 
 <style scoped lang="scss">
-  .meetup-create-page {
+  .advert-create-page {
     min-height: 100vh;
   }
 </style>

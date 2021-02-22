@@ -6,9 +6,10 @@ CREATE TABLE
 IF NOT EXISTS users
 (
     usr_id SERIAL PRIMARY KEY NOT NULL,
-    usr_firstname CHARACTER VARYING NOT NULL,
-    usr_lastname CHARACTER VARYING NOT NULL,
-    usr_email CHARACTER VARYING NOT NULL,
+    usr_firstname CHARACTER VARYING(255) NOT NULL,
+    usr_lastname CHARACTER VARYING(255) NOT NULL,
+    usr_avatar CHARACTER VARYING NOT NULL,
+    usr_email CHARACTER VARYING(255) UNIQUE NOT NULL,
     usr_password CHARACTER VARYING NOT NULL,
     usr_birthdate DATE NOT NULL,
     usr_createdAt DATE,
@@ -19,28 +20,26 @@ CREATE TABLE
 IF NOT EXISTS categories
 (
     cat_id SERIAL PRIMARY KEY NOT NULL,
-    cat_name CHARACTER VARYING NOT NULL,
-    cat_image CHARACTER VARYING,
+    cat_name CHARACTER VARYING(255) NOT NULL,
+    cat_image CHARACTER VARYING(255),
     cat_createdAt DATE,
     cat_updatedAt DATE
 );
 
--- ALTER TYPE kind RENAME VALUE 'don' TO 'Don';
--- ALTER TYPE kind RENAME VALUE 'recherche' TO 'Demande';
-
 CREATE TYPE kind AS ENUM ('Don', 'Demande');
 CREATE TYPE condition AS ENUM ('comme neuf', 'bon état', 'état moyen', 'à retaper');
 
-CREATE TABLE IF NOT EXISTS adverts (
+CREATE TABLE
+IF NOT EXISTS adverts
+(
     adv_id SERIAL PRIMARY KEY NOT NULL,
     adv_kind kind,
-    adv_title CHARACTER VARYING NOT NULL,
+    adv_title CHARACTER VARYING(255) NOT NULL,
     adv_description CHARACTER VARYING NOT NULL,
     adv_image CHARACTER VARYING NOT NULL,
-    adv_second_image CHARACTER VARYING,
-    adv_third_image CHARACTER VARYING,
-    adv_condition CHARACTER VARYING,
-    adv_location CHARACTER VARYING NOT NULL,
+    adv_condition condition,
+    adv_address CHARACTER VARYING(255) NOT NULL,
+    adv_location GEOGRAPHY(POINT, 4326) NOT NULL,
     adv_createdAt DATE,
     adv_updatedAt DATE,
     adv_usrid INTEGER NOT NULL,
@@ -50,26 +49,13 @@ CREATE TABLE IF NOT EXISTS adverts (
 )
 ;
 
--- INSERT INTO users
---     (usr_firstname, usr_lastname, usr_email, usr_password, usr_birthdate, usr_createdAt, usr_updatedAt)
--- VALUES
---     ('Richard', 'Darbois', 'richarddarbois@gmail.com', 'maman666', '1958-12-24', '2020-11-03', '2020-11-03'),
---     ('Donald', 'Trump', 'dontrump@gmail.com', 'makeamericagreatagain', '1953-01-06', '2020-11-03', '2020-11-03'),
---     ('Michel', 'Martin', 'michmart@gmail.com', 'deloreane', '1998-04-13', '2020-11-03', '2020-11-03'),
---     ('Marlene', 'Sasseur', 'msasseur@gmail.com', 'dinerdecons', '1975-9-12', '2020-11-03', '2020-11-03'),
---     ('Kevin', 'Costner', 'kevincostner@gmail.com', 'waterworld', '1955-01-18', '2020-11-03', '2020-11-03'),
---     ('Faye', 'Dunaway', 'fayedunaway@gmail.com', 'freedom911', '1941-01-14', '2020-11-03', '2020-11-03'),
---     ('Riad', 'Sattouf', 'sattoufriad@gmail.com', 'beaugosse', '1978-05-05', '2020-11-03', '2020-11-03'),
---     ('Amelie', 'Mauresmo', 'amauresmo@gmail.com', 'halloffame', '1979-7-05', '2020-11-03', '2020-11-03')
--- ;
-
 INSERT INTO categories
     (cat_name, cat_image, cat_createdAt, cat_updatedAt)
 VALUES
     ('meubles', 'https://images.unsplash.com/photo-1550226891-ef816aed4a98?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80', '2020-11-03', '2020-11-03'),
     ('électroménager', 'https://images.unsplash.com/photo-1582189587033-17c59adf24ae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1506&q=80', '2020-11-03', '2020-11-03'),
     ('vaisselle', 'https://images.unsplash.com/photo-1484632152040-840235adc262?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=958&q=80', '2020-11-03', '2020-11-03'),
-    ('vêtements','https://images.unsplash.com/photo-1558769132-cb1aea458c5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80', '2020-11-03', '2020-11-03'),
+    ('vêtements', 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80', '2020-11-03', '2020-11-03'),
     ('jeux et jouets', 'https://images.unsplash.com/photo-1500995617113-cf789362a3e1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80', '2020-11-03', '2020-11-03'),
     ('déco', 'https://images.unsplash.com/photo-1534349762230-e0cadf78f5da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80', '2020-11-03', '2020-11-03'),
     ('livres', 'https://images.unsplash.com/photo-1531988042231-d39a9cc12a9a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80', '2020-11-03', '2020-11-03'),

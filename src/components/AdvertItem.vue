@@ -25,7 +25,7 @@
               <!-- get here meetup category -->
               <!-- <span class="tag is-success">{{ meetup.category.name }}</span> -->
               <!-- get here meetup location -->
-              <p class="title is-7">{{ advert.location }}</p>
+              <p class="title is-7">{{ advert.address }}</p>
             </div>
           </div>
           <div class="content">

@@ -26,28 +26,21 @@
         <span v-if="!$v.form.description.required" class="help is-danger">Une description est requise</span>
       </div>
     </div>
-    <!-- <div class="field">
+    <div class="field">
       <label class="title is-5">Image</label>
-      <input v-model="form.image" class="input" type="text" placeholder="Image URL" />
+      <input
+        v-model="form.image"
+        v-on:blur="$v.form.image.$touch()"
+        class="input"
+        type="text"
+        placeholder="Image URL"
+      />
       <div v-if="$v.form.image.$error">
         <span v-if="!$v.form.image.required" class="help is-danger">Veuillez fournir au moins une photo</span>
+        <span v-if="!$v.form.image.supportedFileType" class="help is-danger"
+          >La photo doit être au format jpeg, png ou jpg</span
+        >
       </div>
-    </div> -->
-    <div class="file has-name is-boxed">
-      <label class="file-label">
-        <input class="file-input" type="file" name="resume" />
-        <span class="file-cta">
-          <span class="file-icon">
-            <i class="fas fa-upload"></i>
-          </span>
-          <span class="file-label">
-            Choose a file…
-          </span>
-        </span>
-        <span class="file-name">
-          Screen Shot 2017-07-29 at 15.54.25.png
-        </span>
-      </label>
     </div>
     <div>
       <h1 class="title is-5 m-b-sm">Dans quel état est votre objet ?</h1>
@@ -103,6 +96,7 @@
 
 <script>
 import { required } from "vuelidate/lib/validators";
+import { supportedFileType } from "../../helpers/customValidator";
 export default {
   data() {
     return {
@@ -124,6 +118,7 @@ export default {
       },
       image: {
         required,
+        supportedFileType,
       },
       condition: {
         required,

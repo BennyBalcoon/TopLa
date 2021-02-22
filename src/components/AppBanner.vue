@@ -29,7 +29,7 @@ export default {};
 }
 .hero-bg {
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url("https://images.unsplash.com/photo-1585130898093-ff0257e3ebd6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1494&q=80");
+    url("../assets/banner.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -41,5 +41,4 @@ export default {};
 
 </style>
 
-//
-https://images.unsplash.com/photo-1531263060782-b024de9b9793?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80
+

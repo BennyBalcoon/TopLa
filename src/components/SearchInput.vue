@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="search">
-      <span>Je recherche : </span>   
-      <input type="text" placeholder=" " />
+      <span>Je recherche : </span>
+      <input v-model="searchedTitle" type="text" placeholder=" " v-on:keyup.enter.prevent="searchByTitle"/>
       <div>
         <svg>
           <use xlink:href="#path" />
@@ -22,7 +22,24 @@
 </template>
 
 <script>
-export default {};
+import { mapState } from 'vuex'
+export default {
+  data() {
+    return {
+      searchedTitle: null
+    }
+  },
+  computed: {
+    ...mapState({
+      adverts: state => state.adverts.items
+    })
+  },
+  methods: {
+    searchByTitle() {
+      this.$router.push({name: 'AdvertsPage', query: {query: this.searchedTitle}})
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>

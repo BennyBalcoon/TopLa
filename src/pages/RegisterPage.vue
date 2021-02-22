@@ -43,6 +43,21 @@
               <div class="field">
                 <div class="control">
                   <input
+                    v-model="form.avatar"
+                    v-on:blur="$v.form.avatar.$touch()"
+                    class="input is-large"
+                    type="text"
+                    placeholder="Mon avatar"
+                  />
+                  <div v-if="$v.form.avatar.$error" class="form-error">
+                    <span v-if="!$v.form.avatar.required" class="help is-danger">Veuillez remplir votre avatar</span>
+                    <span v-if="!$v.form.avatar.supportedFileType" class="help is-danger">Votre avatar doit être au format jpeg, png ou jpg</span>
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <div class="control">
+                  <input
                     v-model="form.email"
                     v-on:blur="$v.form.email.$touch()"
                     class="input is-large"
@@ -84,7 +99,7 @@
                   />
                   <div v-if="$v.form.password.$error" class="form-error">
                     <span v-if="!$v.form.password.required" class="help is-danger">Un mot de passe est requis</span>
-                    <span v-if="!$v.form.password.minLength" class="help is-danger">Votre mot de passe doit comporter au moins 6 caractères</span>
+                    <span v-if="!$v.form.password.minLength" class="help is-danger">Votre mot de passe doit comporter au moins 8 caractères</span>
                   </div>
                 </div>
               </div>
@@ -121,10 +136,10 @@
           <p class="has-text-grey">
             <router-link v-bind:to="{ name: 'LoginPage' }">J'ai déjà un compte ? Je me connecte ici !</router-link>
           </p>
-          <p class="has-text-grey">
+          <!-- <p class="has-text-grey">
             <a>Sign Up With Google</a> &nbsp;·&nbsp;
             <a href="../">Need Help?</a>
-          </p>
+          </p> -->
         </div>
       </div>
     </div>
@@ -133,12 +148,14 @@
 
 <script>
 import { required, email, minLength, sameAs } from "vuelidate/lib/validators";
+import { supportedFileType } from "../helpers/customValidator"
 export default {
   data() {
     return {
       form: {
         lastname: null,
         firstname: null,
+        avatar: null,
         email: null,
         birthdate: null,
         password: null,
@@ -150,11 +167,12 @@ export default {
     form: {
       lastname: { required },
       firstname: { required },
+      avatar: { required, supportedFileType },
       email: { required, email },
       birthdate: { required },
       password: { 
           required, 
-          minLength: minLength(6)
+          minLength: minLength(8)
           },
       passwordConfirmation: { 
           required,

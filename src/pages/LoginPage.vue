@@ -52,10 +52,10 @@
           <p class="has-text-grey">
             <router-link v-bind:to="{ name: 'RegisterPage' }">Pas encore de compte? Je le crée ici !</router-link>
           </p>
-          <p class="has-text-grey">
+          <!-- <p class="has-text-grey">
             <a>Se connecter avec Google</a> &nbsp;·&nbsp;
             <a href="../">Need Help?</a>
-          </p>
+          </p> -->
         </div>
       </div>
     </div>

@@ -47,7 +47,7 @@ export default {
         description: null,
         image: null,
         condition: null,
-        location: null,
+        address: null,
       },
     };
   },

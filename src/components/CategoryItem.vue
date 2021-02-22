@@ -5,7 +5,7 @@
         <figure class="image is-4by3 imageFade">
           <img class="is-rounded" v-bind:src="category.image" alt />
         </figure>
-        <div class="subtitle m-t-xs bold">{{ category.name | capitalize }}</div>
+        <div class="subtitle m-t-xs bold is-size-7-mobile has-text-justified-mobile">{{ category.name | capitalize }}</div>
       </span>
     </router-link>
   </div>

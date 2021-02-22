@@ -42,14 +42,6 @@ export default {
             return axios.post('/api/v1/users/register', userData)
         },
         logout({commit}) {
-            // return axios.post('api/v1/users/logout')
-            //     .then(() => {
-            //         context.commit('setAuthUser', null)
-            //         return true
-            //     })
-            //     .catch((err) => {
-            //        return err; 
-            //     })
             return new Promise((resolve) => {
                 localStorage.removeItem('topla-jwt')
                 commit('setAuthUser', null)
@@ -71,7 +63,7 @@ export default {
                 }
             }
 
-            return axios.get('/api/v1/users/me', config)
+            return axios.get('/api/v1/users/profil', config)
                 .then((res) => {
                     const user = res.data
                     console.log(user);

@@ -20,7 +20,7 @@
             </div>
             <div class="field">
               <label class="title">Avatar</label>
-              <input class="input">
+              <input v-model="user.avatar" class="input">
             </div>
             <div class="field">
               <label class="title">Date de naissance</label>

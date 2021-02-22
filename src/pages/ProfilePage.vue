@@ -5,7 +5,7 @@
         <div class="columns is-mobile is-multiline">
           <div class="column is-2">
             <figure class="image header-icon user-profile-image">
-              <img class="is-rounded" src="http://www.japoyo.com/2015/wp-content/uploads/2015/02/2015-02-24_11-23-24-650x650.jpg"/>
+              <img class="is-rounded" v-bind:src="user.avatar"/>
             </figure>
           </div>
           <div class="column is-4-tablet is-10-mobile name">
